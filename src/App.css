@@ -1,4 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+
+:root {
+  --primary: #00a3e7;
+  --secondary: #00beac;
+  --light: #f1f2f4;
+  --dark: #091f32;
+  --gray: #6d7888;
+  --font-family-sans-serif: "Manrope", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, "Helvetica Neue", arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+
+
 body {
   margin: 0;
   padding: 0;
+  font-family: var(--font-family-sans-serif);
+  background: var(--light);
+}
+
+
+h3 {
+  font-weight: 800;
+  font-size: 1rem;
+}
+
+p {
+  font-weight: 400;
 }

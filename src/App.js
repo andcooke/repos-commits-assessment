@@ -27,14 +27,14 @@ function App() {
   }
 
   const refineData = (repos) => {
-    // console.log(repos);
+    console.log(repos);
     const updatedInfo = [];
 
     if (repos.length >= 0) {
       repos.forEach((element) => {
         const currentRepo = {
           name: element.name,
-          languages: element.languages_url,
+          language: element.language,
           description: element.description,
           stars: element.stargazers_count,
           forks: element.forks_count,
@@ -51,9 +51,9 @@ function App() {
   }
 
   const renderRepos = (repoInfo) => {
-    if (repoInfo.length > 0) {
+    // if (repoInfo.length > 0) {
       return <RepoInfo repoInfo={repoInfo}/>
-    }
+    // }
   }
 
   return (
