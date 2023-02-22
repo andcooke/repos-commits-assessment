@@ -4,6 +4,15 @@ import React, { useState, useEffect } from 'react';
 import Search from './components/Search/Search';
 import RepoInfo from './components/RepoInfo/RepoInfo';
 
+/* SHOW DATE */
+/* SHOW DATE */
+/* SHOW DATE */
+/* SHOW DATE */
+/* SHOW DATE */
+/* SHOW DATE */
+/* SHOW DATE */
+/* SHOW DATE */
+
 
 function App() {
 
@@ -27,7 +36,7 @@ function App() {
   }
 
   const refineData = (repos) => {
-    console.log(repos);
+    // console.log(repos);
     const updatedInfo = [];
 
     if (repos.length >= 0) {
@@ -39,6 +48,7 @@ function App() {
           stars: element.stargazers_count,
           forks: element.forks_count,
           date: element.created_at,
+          commits: element.commits_url
         };
         updatedInfo.push(currentRepo);
       })

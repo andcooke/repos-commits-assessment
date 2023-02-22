@@ -7,10 +7,36 @@ import './styles.css';
 
 export default function RepoInfo({repoInfo}) {
 
+  const [commits, setCommits] = useState([]);
+  // const [showCommits, setShowCommits] = useState(false);
+// console.log(repoInfo)
 
-  const [showCommits, setShowCommits] = useState(false);
-// console.log(repoInfo);
+  const fetchCommits = (commits) => {
+    // console.log(commits);
+    let commitsUrl = commits.split('{/sha}')[0] + "?per_page=5";
+    // console.log(commitsUrl)
+    fetch(commitsUrl)
+    .then((response) => response.json())
+    .then((data) => refineCommits(data))
+    .catch((err) => console.error(err));
+  }
 
+  const refineCommits = (commits) => {
+    const updatedCommits = [];
+    // console.log(commits)
+    if (commits.length >= 0) {
+      commits.forEach((element) => {
+        const currentCommits = {
+          title: element.commit.message,
+          username: element.commit.author.name,
+          hash: element.sha,
+          date: element.commit.author.date,
+        };
+        updatedCommits.push(currentCommits);
+      })
+      setCommits(updatedCommits);
+    }
+  }
 
 
   return (
@@ -18,8 +44,8 @@ export default function RepoInfo({repoInfo}) {
       {/* {console.log(repoInfo)} */}
       {
         repoInfo && repoInfo.map((element, i) => (
-          <div className="repo-container flex" onClick={() => setShowCommits(!showCommits)}>
-            <div key={i} className="repo-card flex">
+          <div  key={i} className="repo-container flex" >
+            <div className="repo-card flex" onClick={() => fetchCommits(element.commits)}>
               <div className="repo-info flex">
                 <h2 id="repo-title">{element.name}</h2>
                 <p>{element.language}</p>
@@ -31,7 +57,7 @@ export default function RepoInfo({repoInfo}) {
               </div>
             </div>
             <div className="commit-container">
-              {showCommits ? <CommitInfo /> : ""}
+              <CommitInfo commits={commits}/>
               {/* <CommitInfo /> */}
             </div>
           </div>

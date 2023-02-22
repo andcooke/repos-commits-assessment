@@ -9,7 +9,7 @@ export default function Search({ input, setInput, fetchRepoData }) {
     <div className="search-input-container">
       <form>
         <input type="text" value={input} placeholder="org name" onChange={(e) => setInput(e.target.value)}></input>
-        <input class="btn" type="submit" onClick={fetchRepoData}></input>
+        <input className="btn" type="submit" onClick={fetchRepoData}></input>
       </form>
     </div>
   )
