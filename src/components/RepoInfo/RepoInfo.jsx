@@ -11,14 +11,16 @@ export default function RepoInfo({repoInfo}) {
   // const [showCommits, setShowCommits] = useState(false);
 // console.log(repoInfo)
 
-  const fetchCommits = (commits) => {
+  const fetchCommits = (commits, event) => {
     // console.log(commits);
-    let commitsUrl = commits.split('{/sha}')[0] + "?per_page=5";
-    // console.log(commitsUrl)
-    fetch(commitsUrl)
-    .then((response) => response.json())
-    .then((data) => refineCommits(data))
-    .catch((err) => console.error(err));
+    // let commitsUrl = commits.split('{/sha}')[0] + "?per_page=5";
+    // // console.log(commitsUrl)
+    // fetch(commitsUrl)
+    // .then((response) => response.json())
+    // .then((data) => refineCommits(data))
+    // .catch((err) => console.error(err));
+    console.log("event.target:", event.target);
+    renderCommits();
   }
 
   const refineCommits = (commits) => {
@@ -39,18 +41,25 @@ export default function RepoInfo({repoInfo}) {
   }
 
 
+  const renderCommits = () => {
+
+    console.log("inside renderCommits function:", repoInfo);
+  }
+
+
   return (
     <div className="repo-commit-container flex">
       {/* {console.log(repoInfo)} */}
       {
         repoInfo && repoInfo.map((element, i) => (
           <div  key={i} className="repo-container flex" >
-            <div className="repo-card flex" onClick={() => fetchCommits(element.commits)}>
+            <div className="repo-card flex" onClick={(event) => fetchCommits(element.commits, event)}>
               <div className="repo-info flex">
                 <h2 id="repo-title">{element.name}</h2>
                 <p>{element.language}</p>
                 <p>Stars: {element.stars}</p>
-                <p>Forks: {element.forks}</p> 
+                <p>Forks: {element.forks}</p>
+                <p>{element.date.split('T')[0]}</p>
               </div>
               <div className="repo-description flex">
                 <h4>{element.description}</h4>

@@ -4,20 +4,11 @@ import React, { useState, useEffect } from 'react';
 import Search from './components/Search/Search';
 import RepoInfo from './components/RepoInfo/RepoInfo';
 
-/* SHOW DATE */
-/* SHOW DATE */
-/* SHOW DATE */
-/* SHOW DATE */
-/* SHOW DATE */
-/* SHOW DATE */
-/* SHOW DATE */
-/* SHOW DATE */
-
 
 function App() {
 
   const [input, setInput] = useState('');
-  const requestURL = `https://api.github.com/orgs/${input}/repos?per_page=100`
+  const requestURL = `https://api.github.com/orgs/${input}/repos?per_page=5`
   
   const [repoInfo, setRepoInfo] = useState([]);
 
