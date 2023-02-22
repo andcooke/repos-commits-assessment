@@ -17,6 +17,8 @@
 }
 
 input {
+  background: var(--light);
+  color: var(--secondary);
   border: 2px solid var(--primary);
   font-size: 1rem;
   border-radius: 10px 0 0 10px;
@@ -28,7 +30,10 @@ input:focus, input:focus .btn{
 }
 
 .btn:hover {
-  background: radial-gradient(var(--secondary), var(--primary));
+  /* background: radial-gradient(var(--secondary), var(--primary)); */
+  background: var(--secondary);
+  box-shadow: 0 0 20px var(--secondary);
+  border: 2px solid var(--secondary);
 }
 
 
@@ -43,5 +48,11 @@ input:focus, input:focus .btn{
     border: 4px solid var(--primary);
     font-size: 1.5rem;
   }
+
+  .btn:hover {
+    /* background: radial-gradient(var(--secondary), var(--primary)); */
+    border: 4px solid var(--secondary);
+  }
+  
 
 }
