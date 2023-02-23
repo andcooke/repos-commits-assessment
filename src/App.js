@@ -80,7 +80,9 @@ function App() {
   return (
     <div className="App">
       <Search input={input} setInput={setInput} setPerPage={setPerPage} fetchRepoData={fetchRepoData}/>
-      <RepoInfo repoInfo={repoInfo} input={input}/>
+      <Suspense fallback="<h1>...</h1>">  
+        <RepoInfo repoInfo={repoInfo} input={input}/>
+      </Suspense>
     </div>
   );
 }

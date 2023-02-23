@@ -7,13 +7,6 @@ import './styles.css';
 
 export default function RepoInfo({repoInfo, input}) {
 
-  // const CommitInfo = lazy(() => wait(300).then(() => import("../CommitInfo/CommitInfo")));
-
-  // function wait(time) {
-  //   return new Promise(resolve => {
-  //     setTimeout(resolve, time)
-  //   })
-  // }
 
   const [showCommit, setShowCommit] = useState([]);
 
@@ -39,48 +32,8 @@ export default function RepoInfo({repoInfo, input}) {
       setShowCommit(commitOrder);
   }
 
-
-
-
-  // const fetchCommits = (commits, event) => {
-  //   const commitsUrl = commits.split('{/sha}')[0] + "?per_page=5";
-  //   const repoIndex = event.currentTarget.getAttribute("name");
-  //   if (activeRepo === repoIndex) {
-  //     setClickedActive(!clickedActive);
-  //   }
-  //   fetch(commitsUrl)
-  //   .then((response) => response.json())
-  //   .then((data) => refineCommits(data))
-  //   .catch((err) => console.error(err));
-  //   setActiveRepo(repoIndex);
-  // }
-
-  // const refineCommits = (commits) => {
-  //   // console.log(commits);
-  //   const updatedCommits = [];
-  //   if (commits.length >= 0) {
-  //     commits.forEach((element) => {
-  //       let username = element.commit.author.name
-        
-  //       if (element.author && element.author.login) {
-  //         username = element.author.login;
-  //       } 
-        
-  //       const currentCommits = {
-  //         title: element.commit.message,
-  //         username: username,
-  //         hash: element.sha,
-  //         date: element.commit.author.date,
-  //       };
-  //       updatedCommits.push(currentCommits);
-  //     })
-  //     setCommits(updatedCommits);
-  //   }
-  // }
-
   return (
     <div className="repo-commit-container flex">
-      {/* {console.log(input)} */}
       {/* <h1>Repositories by {input}</h1> */}
       {
         repoInfo && repoInfo.map((element, i) => (
