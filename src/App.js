@@ -10,7 +10,7 @@ function App() {
   const [input, setInput] = useState('');
   const [perPage, setPerPage] = useState(5);
 
-  const requestURL = `https://api.github.com/orgs/${input}/repos?per_page=3`
+  const requestURL = `https://api.github.com/orgs/${input}/repos?per_page=${perPage}`
   
   const [repoInfo, setRepoInfo] = useState([]);
 

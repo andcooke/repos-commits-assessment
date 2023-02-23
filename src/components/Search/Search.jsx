@@ -9,13 +9,13 @@ export default function Search({ input, setInput, perPage, setPerPage, fetchRepo
 
   return (
     <div className="search-input-container flex">
-      {console.log(perPage)};
+      {/* {console.log(perPage)}; */}
       <form className="flex">
         <input type="text" value={input} placeholder="type org name here" onChange={(e) => setInput(e.target.value)}></input>
         <input className="btn" type="submit" onClick={fetchRepoData}></input>
         <div className="per-page-container">
           <label for="per-page">How many?</label>
-          <select name="per-page" id="per-page" onChange={(e, i, value) => setPerPage(value)}>
+          <select name="per-page" id="per-page" onChange={(e, i, value) => setPerPage(e.target.value)}>
             <option value="1">1</option>
             <option value="5" selected>5</option>
             <option value="10">10</option>
