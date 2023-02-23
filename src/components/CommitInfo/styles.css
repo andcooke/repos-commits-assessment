@@ -4,6 +4,9 @@
 
 .commit-info {
   justify-content: space-between;
+}
+
+.commit-card:not(:last-child) {
   border-bottom: 1px solid var(--gray);
 }
 
