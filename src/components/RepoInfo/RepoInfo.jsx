@@ -9,7 +9,6 @@ export default function RepoInfo({repoInfo}) {
 
   const [commits, setCommits] = useState([]);
   const [activeRepo, setActiveRepo] = useState();
-  // const [showCommits, setShowCommits] = useState(false);
 
 
   const fetchCommits = (commits, event) => {
@@ -25,7 +24,7 @@ export default function RepoInfo({repoInfo}) {
 
   const refineCommits = (commits) => {
     const updatedCommits = [];
-    // console.log(commits)
+    console.log(commits)
     if (commits.length >= 0) {
       commits.forEach((element) => {
         const currentCommits = {
@@ -39,11 +38,6 @@ export default function RepoInfo({repoInfo}) {
       setCommits(updatedCommits);
     }
   }
-
-  const renderCommits = () => {
-
-  }
-
 
   return (
     <div className="repo-commit-container flex">
@@ -64,7 +58,6 @@ export default function RepoInfo({repoInfo}) {
             </div>
             <div className="commit-container">
                {((i === activeRepo) ?  <CommitInfo commits={commits}/> : '')}               
-              {/* this is where the commits go */}
             </div>
           </div>
         ))

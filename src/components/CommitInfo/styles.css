@@ -1,0 +1,12 @@
+.commit-title {
+  margin: 0 auto;
+}
+
+.commit-info {
+  justify-content: space-between;
+  border-bottom: 1px solid var(--gray);
+}
+
+.commit-author {
+  width: 20%;
+}
