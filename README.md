@@ -22,7 +22,21 @@
   
   ## Usage
   
+  When arriving to the page there is a textbox, a submit button, and a dropdown input. 
+
   ![Landing Screen](./images/landing.png)
+  
+  The user can type in the name of an organization on GitHub and select how many repos they want to return from the dropdown and click submit or press enter on their keyboard.
+
+  ![sample inputs](./images/input.png)
+
+  On submit, the page will render the selected number of repositories from the input organization. Showing the name of the repository, the number of stars, the number of forks, the date it was created, and the description. The cards are ordered by descending star count.
+
+  ![repos rendering](./images/repos.png)
+
+  Clicking a repo card will show the last 5 commits made to that repo. Showing the message, the author, the date is was created, and the hash associated with that repo. 
+
+  ![commits](./images/commits.png)
   
   ## Future Improvements
   
