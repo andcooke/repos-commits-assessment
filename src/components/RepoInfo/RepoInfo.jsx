@@ -8,7 +8,7 @@ import './styles.css';
 export default function RepoInfo({repoInfo}) {
 
   const [commits, setCommits] = useState([]);
-  const [activeRepo, setActiveRepo] = useState();
+  const [activeRepo, setActiveRepo] = useState('');
 
 
   const fetchCommits = (commits, event) => {
@@ -17,9 +17,9 @@ export default function RepoInfo({repoInfo}) {
     .then((response) => response.json())
     .then((data) => refineCommits(data))
     .catch((err) => console.error(err));
-    const repoIndex = event.currentTarget.getAttribute("index");
-    setActiveRepo(parseInt(repoIndex));
-    // console.log("activeRepo", typeof activeRepo)
+    const repoIndex = event.currentTarget.getAttribute("name");
+    setActiveRepo(repoIndex);
+    console.log("activeRepo", activeRepo)
   }
 
   const refineCommits = (commits) => {
@@ -44,7 +44,7 @@ export default function RepoInfo({repoInfo}) {
       {
         repoInfo && repoInfo.map((element, i) => (
           <div  key={i} className="repo-container flex" >
-            <div className="repo-card flex" index={i} onClick={(event) => fetchCommits(element.commits, event)}>
+            <div className="repo-card flex" name={element.name} onClick={(event) => fetchCommits(element.commits, event)}>
               <div className="repo-info flex">
                 <h2 id="repo-title">{element.name}</h2>
                 <p>{element.language}</p>
@@ -57,7 +57,7 @@ export default function RepoInfo({repoInfo}) {
               </div>
             </div>
             <div className="commit-container">
-               {((i === activeRepo) ?  <CommitInfo commits={commits}/> : '')}               
+               {((element.name === activeRepo) ?  <CommitInfo commits={commits}/> : '')}               
             </div>
           </div>
         ))
