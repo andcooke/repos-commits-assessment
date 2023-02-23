@@ -27,9 +27,9 @@
   ## Future Improvements
   
   It was important to submit as soon as I could, but if I had another day I would have liked to implement the following improvements:
-    *  caching searches for faster load times.
-    *  more on-screen feedback for better UX.
-    *  pagination for repos and commits for faster load times and better UX.
+    1. caching searches for faster load times.
+    2. more on-screen feedback for better UX.
+    3. pagination for repos and commits for faster load times and better UX.
   
   
   ## Contributors
