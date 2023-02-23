@@ -14,18 +14,21 @@
   border-radius: 0 10px 10px 0;
   color: var(--light);
   margin-left: -2px;
+  font-style: normal;
 }
 
 input {
-  background: var(--light);
+  background: var(--dark);
   color: var(--secondary);
+  font-weight: 800;
   border: 2px solid var(--primary);
   font-size: 1rem;
+  font-style: italic;
   border-radius: 10px 0 0 10px;
   padding: 10px;
 }
 
-input:focus, input:focus .btn{
+input:focus {
   outline: none;
 }
 

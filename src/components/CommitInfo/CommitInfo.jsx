@@ -4,16 +4,15 @@ export default function CommitInfo({commits}) {
 
 
   useEffect(() => {
-    console.log(commits);
+    // console.log(commits);
+    // console.log("inside commit component", activeRepo);
   },[commits])
+
+
 
   return (
     <div>
-      {
-        commits && commits.map((element, i) => (
-          <div key={i}>{element.title}</div>
-        ))
-      }
+      test
     </div>
   )
 }

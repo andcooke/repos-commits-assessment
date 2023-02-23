@@ -4,23 +4,14 @@
   flex-wrap: wrap;
 }
 
-
 .repo-container {
   width: 95%;
   justify-content: center;
   margin: 15px auto;
 }
 
-
-.repo-card {
-  background: white;
-  color: var(--gray);
-  width: 75%;
-  border-radius: 15px;
-  border: 2px solid var(--primary);
-  text-align: center;
-  align-items: center;
-  margin: 10px 0;
+.repo-container:first-child {
+  margin: -15px auto 15px auto;
 }
 
 .repo-container:nth-child(2n) .repo-card .repo-info {
@@ -38,6 +29,17 @@
 
 .repo-container:nth-child(2n) .repo-card:hover {
   box-shadow: 0 0 10px 5px var(--secondary);
+}
+
+.repo-card {
+  background: white;
+  color: var(--gray);
+  width: 75%;
+  border-radius: 15px;
+  border: 2px solid var(--primary);
+  text-align: center;
+  align-items: center;
+  margin: 10px 0;
 }
 
 .repo-info {
@@ -72,6 +74,13 @@
   width: 100%;
 }
 
+.hidden-commit-container {
+  display: none;
+}
+
+.show-commit-container {
+  display: flex;
+}
 
 @media screen and (min-width: 600px) {
   

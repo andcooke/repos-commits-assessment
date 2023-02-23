@@ -8,7 +8,7 @@ import RepoInfo from './components/RepoInfo/RepoInfo';
 function App() {
 
   const [input, setInput] = useState('');
-  const requestURL = `https://api.github.com/orgs/${input}/repos?per_page=5`
+  const requestURL = `https://api.github.com/orgs/${input}/repos?per_page=3`
   
   const [repoInfo, setRepoInfo] = useState([]);
 
