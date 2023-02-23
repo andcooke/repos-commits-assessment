@@ -12,10 +12,10 @@ export default function RepoInfo({repoInfo}) {
   function checkActiveRepo (event, info) {
       const commitOrder = []
       const repoName = event.currentTarget.getAttribute("name");
-        info.map((element, i) => {
+        info.forEach((element, i) => {
           commitOrder.push(false);
         })
-        info.map((element, i) => {
+        info.forEach((element, i) => {
           if (element.name === repoName) {
             commitOrder.splice(i, 1, !(showCommit[i]));
           }
@@ -54,7 +54,7 @@ export default function RepoInfo({repoInfo}) {
         {(
           repoInfo.length 
         ? 
-          <a href='#'>Click here to return to the top</a> 
+          <a href='#/'>Click here to return to the top</a> 
         :
           '')}
       </div>
