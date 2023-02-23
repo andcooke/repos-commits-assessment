@@ -26,10 +26,15 @@ export default function RepoInfo({repoInfo}) {
     const updatedCommits = [];
     if (commits.length >= 0) {
       commits.forEach((element) => {
-
+        let username = element.commit.author.name
+        
+        if (element.author && element.author.login) {
+          username = element.author.login;
+        } 
+        
         const currentCommits = {
           title: element.commit.message,
-          username: element.commit.author.name,
+          username: username,
           hash: element.sha,
           date: element.commit.author.date,
         };

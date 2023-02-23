@@ -50,9 +50,7 @@ function App() {
   }
 
   const renderRepos = (repoInfo) => {
-    // if (repoInfo.length > 0) {
       return <RepoInfo repoInfo={repoInfo}/>
-    // }
   }
 
   return (
