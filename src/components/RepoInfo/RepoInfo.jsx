@@ -19,14 +19,14 @@ export default function RepoInfo({repoInfo}) {
     .catch((err) => console.error(err));
     const repoIndex = event.currentTarget.getAttribute("name");
     setActiveRepo(repoIndex);
-    console.log("activeRepo", activeRepo)
   }
 
   const refineCommits = (commits) => {
+    console.log(commits);
     const updatedCommits = [];
-    console.log(commits)
     if (commits.length >= 0) {
       commits.forEach((element) => {
+
         const currentCommits = {
           title: element.commit.message,
           username: element.commit.author.name,

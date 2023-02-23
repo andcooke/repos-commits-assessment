@@ -57,7 +57,7 @@ function App() {
 
   return (
     <div className="App">
-      <Search input={input} setInput={setInput} perPage={perPage} setPerPage={setPerPage} fetchRepoData={fetchRepoData}/>
+      <Search input={input} setInput={setInput} setPerPage={setPerPage} fetchRepoData={fetchRepoData}/>
       {renderRepos(repoInfo)}
     </div>
   );

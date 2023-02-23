@@ -1,15 +1,8 @@
-import React, {useEffect} from "react";
+import React from "react";
+
 import './styles.css';
 
 export default function CommitInfo({commits}) {
-
-
-  useEffect(() => {
-    // console.log(commits);
-    // console.log("inside commit component", activeRepo);
-  },[commits])
-
-
 
   return (
     <div className="all-commits">
