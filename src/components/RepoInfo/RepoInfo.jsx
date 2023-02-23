@@ -1,4 +1,4 @@
-import React, { useState, useEffect, lazy, Suspense } from "react";
+import React, { useState } from "react";
 
 import CommitInfo from "../CommitInfo/CommitInfo";
 
@@ -43,11 +43,9 @@ export default function RepoInfo({repoInfo}) {
               </div>
             </div>
             <div className={(showCommit[i]) ? 'show commit-container' : 'hidden commit-container'} >
-
               {
               element.commits.map((element, i) => <CommitInfo key={i} commit={element} />)
               }
-
             </div>
           </div>
         ))

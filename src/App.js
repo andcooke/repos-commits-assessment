@@ -1,14 +1,12 @@
 import './App.css';
-import React, { useState, lazy, Suspense } from 'react';
+import React, { useState } from 'react';
 
 import Search from './components/Search/Search';
-// import RepoInfo from './components/RepoInfo/RepoInfo';
+import RepoInfo from './components/RepoInfo/RepoInfo';
 
-const RepoInfo = lazy(() => import("./components/RepoInfo/RepoInfo"));
 
 
 function App() {
-
 
   const [input, setInput] = useState('');
   const [perPage, setPerPage] = useState(5);
@@ -79,7 +77,6 @@ function App() {
         };
         repoInfo.push(currentRepo);
       })
-      // console.log(repoInfo)
       repoInfo.sort((a, b) => b.stars - a.stars)
       setRepoInfo(repoInfo)
     } 
@@ -90,9 +87,7 @@ function App() {
   return (
     <div className="App">
       <Search input={input} setInput={setInput} setPerPage={setPerPage} fetchRepoData={fetchRepoData}/>
-      <Suspense fallback={() => <h1>...</h1>}>  
-        <RepoInfo repoInfo={repoInfo} input={input}/>
-      </Suspense>
+      <RepoInfo repoInfo={repoInfo} input={input}/>
     </div>
   );
 }
