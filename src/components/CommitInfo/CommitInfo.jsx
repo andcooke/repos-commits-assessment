@@ -11,7 +11,7 @@ export default function CommitInfo({commit}) {
           <h2>{commit.title}</h2>
         </div>
         <div className="flex commit-info">
-          <p className="commit-author">by: {commit.username}</p>
+          <p id="commit-author">by: {commit.username}</p>
           <p>{commit.date.split('T')[0]}</p>
           <p>{commit.hash}</p>
         </div>

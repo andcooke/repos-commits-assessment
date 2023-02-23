@@ -5,45 +5,26 @@ import CommitInfo from "../CommitInfo/CommitInfo";
 import './styles.css';
 
 
-export default function RepoInfo({repoInfo, input}) {
-
+export default function RepoInfo({repoInfo}) {
 
   const [showCommit, setShowCommit] = useState([]);
 
-  // const [commits, setCommits] = useState([]);
-  // const [activeRepo, setActiveRepo] = useState('');
-  // const [clickedActive, setClickedActive] = useState(false);
-
-  // useEffect (() => {
-  //   setActiveRepo('')
-  // },[clickedActive])
-
   function checkActiveRepo (event, info) {
       const commitOrder = []
-      // console.log(info);
-      // console.log(commitOrder);
       const repoName = event.currentTarget.getAttribute("name");
         info.map((element, i) => {
-          // console.log(element);
           commitOrder.push(false);
         })
         info.map((element, i) => {
           if (element.name === repoName) {
-            console.log(commitOrder.splice(i, 1, !(showCommit[i])));
-            // commitOrder.splice(i, 1, !showCommit)
+            commitOrder.splice(i, 1, !(showCommit[i]));
           }
         })
-        // if (element.name === repoName) {
-        //   // commitOrder.splice(i, 1, !showCommit)
-        //   console.log(commitOrder);
-        // } 
-      // console.log(commitOrder);
       setShowCommit(commitOrder);
   }
 
   return (
     <div className="repo-commit-container flex">
-      {/* <h1>Repositories by {input}</h1> */}
       {
         repoInfo && repoInfo.map((element, i) => (
           <div  key={i} className="repo-container flex" >

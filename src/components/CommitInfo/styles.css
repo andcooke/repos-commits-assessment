@@ -6,10 +6,15 @@
   justify-content: space-between;
 }
 
+.commit-info > * {
+  width: 30%;
+  text-align: center;
+}
+
 .all-commits:not(:last-child) {
   border-bottom: 1px solid var(--gray);
 }
 
-.commit-author {
-  width: 20%;
-}
+#commit-author {
+  text-align: left;
+} 
