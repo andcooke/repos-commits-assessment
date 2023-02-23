@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import CommitInfo from "../CommitInfo/CommitInfo";
 
@@ -9,6 +9,11 @@ export default function RepoInfo({repoInfo}) {
 
   const [commits, setCommits] = useState([]);
   const [activeRepo, setActiveRepo] = useState('');
+  const [clickedActive, setClickedActive] = useState(false);
+
+  useEffect (() => {
+    setActiveRepo('')
+  },[clickedActive])
 
 
   const fetchCommits = (commits, event) => {
@@ -18,11 +23,14 @@ export default function RepoInfo({repoInfo}) {
     .then((data) => refineCommits(data))
     .catch((err) => console.error(err));
     const repoIndex = event.currentTarget.getAttribute("name");
+    if (activeRepo === repoIndex) {
+      setClickedActive(!clickedActive);
+    }
     setActiveRepo(repoIndex);
   }
 
   const refineCommits = (commits) => {
-    console.log(commits);
+    // console.log(commits);
     const updatedCommits = [];
     if (commits.length >= 0) {
       commits.forEach((element) => {
