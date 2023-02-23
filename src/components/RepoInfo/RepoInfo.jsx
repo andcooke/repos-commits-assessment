@@ -19,7 +19,7 @@ export default function RepoInfo({repoInfo, input}) {
   // },[clickedActive])
 
   function checkActiveRepo (event, index, info) {
-      const commitOrder = [];
+      const commitOrder = []
       const repoName = event.currentTarget.getAttribute("name");
       info.forEach((element) => {
         if (element.name === repoName) {
