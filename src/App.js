@@ -11,10 +11,12 @@ function App() {
 
   const [input, setInput] = useState('');
   const [perPage, setPerPage] = useState(5);
+  const [currentRepo, setData] = useState([]);
+  const [repoInfo, setRepoInfo] = useState([]);
+
 
   const requestURL = `https://api.github.com/orgs/${input}/repos?per_page=${perPage}`
   
-  const [repoInfo, setRepoInfo] = useState([]);
 
   const fetchRepoData = (e) => {
     e.preventDefault();
@@ -25,12 +27,37 @@ function App() {
     setInput('');
   }
 
-  const refineData = (repos) => {
-    // console.log(repos);
-    const updatedInfo = [];
 
-    if (repos.length >= 0) {
+  const refineData = (repos) => {
+    const repoInfo = [];
+     
+    if (repos.length > 0) {
       repos.forEach((element) => {
+
+      const commitInfo =[];
+
+      const commitsUrl = element.commits_url.split('{/sha}')[0] + "?per_page=5";
+      fetch(commitsUrl)
+      .then((response) => response.json())
+      .then((data) => {
+        data.forEach((element) => {
+          let username = element.commit.author.name
+        
+          if (element.author && element.author.login) {
+            username = element.author.login;
+          } 
+          
+          const currentCommits = {
+            title: element.commit.message,
+            username: username,
+            hash: element.sha,
+            date: element.commit.author.date,
+          };
+          commitInfo.push(currentCommits);
+        })
+      })
+      .catch((err) => console.error(err));
+
         const currentRepo = {
           name: element.name,
           language: element.language,
@@ -38,14 +65,17 @@ function App() {
           stars: element.stargazers_count,
           forks: element.forks_count,
           date: element.created_at,
-          commits: element.commits_url
+          commits: commitInfo,
         };
-        updatedInfo.push(currentRepo);
+        repoInfo.push(currentRepo);
       })
-      updatedInfo.sort((a, b) => b.stars - a.stars)
-      setRepoInfo(updatedInfo)
+      // console.log(repoInfo)
+      repoInfo.sort((a, b) => b.stars - a.stars)
+      setRepoInfo(repoInfo)
     } 
   }
+
+
 
   return (
     <div className="App">
