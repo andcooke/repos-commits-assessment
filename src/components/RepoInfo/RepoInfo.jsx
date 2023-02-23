@@ -10,25 +10,34 @@ export default function RepoInfo({repoInfo, input}) {
 
   const [showCommit, setShowCommit] = useState([]);
 
-  const [commits, setCommits] = useState([]);
-  const [activeRepo, setActiveRepo] = useState('');
-  const [clickedActive, setClickedActive] = useState(false);
+  // const [commits, setCommits] = useState([]);
+  // const [activeRepo, setActiveRepo] = useState('');
+  // const [clickedActive, setClickedActive] = useState(false);
 
   // useEffect (() => {
   //   setActiveRepo('')
   // },[clickedActive])
 
-  function checkActiveRepo (event, index, info) {
+  function checkActiveRepo (event, info) {
       const commitOrder = []
+      // console.log(info);
+      // console.log(commitOrder);
       const repoName = event.currentTarget.getAttribute("name");
-      info.forEach((element) => {
-        if (element.name === repoName) {
-          commitOrder.push(true)
-        } else {
+        info.map((element, i) => {
+          // console.log(element);
           commitOrder.push(false);
-        }
-      })
-      console.log(commitOrder);
+        })
+        info.map((element, i) => {
+          if (element.name === repoName) {
+            console.log(commitOrder.splice(i, 1, !(showCommit[i])));
+            // commitOrder.splice(i, 1, !showCommit)
+          }
+        })
+        // if (element.name === repoName) {
+        //   // commitOrder.splice(i, 1, !showCommit)
+        //   console.log(commitOrder);
+        // } 
+      // console.log(commitOrder);
       setShowCommit(commitOrder);
   }
 
@@ -39,7 +48,7 @@ export default function RepoInfo({repoInfo, input}) {
         repoInfo && repoInfo.map((element, i) => (
           <div  key={i} className="repo-container flex" >
             <div className="repo-card flex" name={element.name} onClick={(event) => {
-              checkActiveRepo(event, i, repoInfo);
+              checkActiveRepo(event, repoInfo);
               }}>
               <div className="repo-info flex">
                 <h2 id="repo-title">{element.name}</h2>

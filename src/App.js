@@ -4,14 +4,14 @@ import React, { useState, lazy, Suspense } from 'react';
 import Search from './components/Search/Search';
 // import RepoInfo from './components/RepoInfo/RepoInfo';
 
-
 const RepoInfo = lazy(() => import("./components/RepoInfo/RepoInfo"));
+
 
 function App() {
 
+
   const [input, setInput] = useState('');
   const [perPage, setPerPage] = useState(5);
-  const [currentRepo, setData] = useState([]);
   const [repoInfo, setRepoInfo] = useState([]);
 
 
@@ -20,7 +20,12 @@ function App() {
 
   const fetchRepoData = (e) => {
     e.preventDefault();
-    fetch(requestURL)
+    fetch(requestURL, {
+      headers: {
+        Authorization: `Bearer ${process.env.REACT_APP_AUTH_TOKEN}`,
+        "Content-Type": "application/json",
+      }
+    })
     .then((response) => response.json())
     .then((data) => refineData(data))
     .catch((err) => console.error(err));
@@ -37,7 +42,12 @@ function App() {
       const commitInfo =[];
 
       const commitsUrl = element.commits_url.split('{/sha}')[0] + "?per_page=5";
-      fetch(commitsUrl)
+      fetch(commitsUrl, {
+        headers: {
+          Authorization: `Bearer ${process.env.REACT_APP_AUTH_TOKEN}`,
+          "Content-Type": "application/json",
+        }
+      })
       .then((response) => response.json())
       .then((data) => {
         data.forEach((element) => {
@@ -80,7 +90,7 @@ function App() {
   return (
     <div className="App">
       <Search input={input} setInput={setInput} setPerPage={setPerPage} fetchRepoData={fetchRepoData}/>
-      <Suspense fallback="<h1>...</h1>">  
+      <Suspense fallback={() => <h1>...</h1>}>  
         <RepoInfo repoInfo={repoInfo} input={input}/>
       </Suspense>
     </div>
