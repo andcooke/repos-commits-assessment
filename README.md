@@ -23,23 +23,16 @@
   ## Usage
   
   input here.
-  ![Landing Page](./images/landing.png)
   
-  ## License
-
-  This project is protected under the MIT License.
   
   ## Contributors
   
   [Andrew Cooke](https://github.com/andcooke)
   
-  ## Tests
-  
-  testing is closed at this time
-  
+
   ## Questions
   
-  If you have any questions or wish to contribute to this project you may email me at andcooke@duck.com.
+  If you have any questions you may email me at andcooke@duck.com.
 
-  Or you may reach out at my GitHub: [Andrew Cooke](https://github.com/andcooke).
+  Or you may reach out at my LinkedIn: [Andrew Cooke](https://linkedin.com/in/andrew-l-cooke).
   
