@@ -9,6 +9,7 @@
 .commit-info > * {
   width: 30%;
   text-align: center;
+  justify-content: center;
 }
 
 .all-commits:not(:last-child) {
@@ -18,3 +19,17 @@
 #commit-author {
   text-align: left;
 } 
+
+.hash {
+  width: 100%;
+  color: var(--gray);
+  justify-content: center;
+}
+
+@media screen and (min-width: 600px) {
+  .hash {
+    width: 30%;
+
+  }
+}
+  
