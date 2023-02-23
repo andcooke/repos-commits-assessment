@@ -75,7 +75,14 @@ export default function RepoInfo({repoInfo}) {
           </div>
         ))
       }
-
+      <div className="link-to-top flex">
+        {(
+          repoInfo.length 
+        ? 
+          <a href='#'>Click here to return to the top</a> 
+        :
+          '')}
+      </div>
     </div>
   )
 }
