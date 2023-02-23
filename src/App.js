@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 import Search from './components/Search/Search';
 import RepoInfo from './components/RepoInfo/RepoInfo';
@@ -8,13 +8,11 @@ import RepoInfo from './components/RepoInfo/RepoInfo';
 function App() {
 
   const [input, setInput] = useState('');
+  const [perPage, setPerPage] = useState(5);
+
   const requestURL = `https://api.github.com/orgs/${input}/repos?per_page=3`
   
   const [repoInfo, setRepoInfo] = useState([]);
-
-  useEffect(() => {
-    // console.log("useEffect", repoInfo);
-  },[repoInfo])
 
   const fetchRepoData = (e) => {
     e.preventDefault();
@@ -59,7 +57,7 @@ function App() {
 
   return (
     <div className="App">
-      <Search input={input} setInput={setInput} fetchRepoData={fetchRepoData}/>
+      <Search input={input} setInput={setInput} perPage={perPage} setPerPage={setPerPage} fetchRepoData={fetchRepoData}/>
       {renderRepos(repoInfo)}
     </div>
   );
