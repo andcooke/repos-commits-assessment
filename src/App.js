@@ -1,9 +1,11 @@
 import './App.css';
-import React, { useState } from 'react';
+import React, { useState, lazy, Suspense } from 'react';
 
 import Search from './components/Search/Search';
-import RepoInfo from './components/RepoInfo/RepoInfo';
+// import RepoInfo from './components/RepoInfo/RepoInfo';
 
+
+const RepoInfo = lazy(() => import("./components/RepoInfo/RepoInfo"));
 
 function App() {
 
@@ -20,7 +22,6 @@ function App() {
     .then((response) => response.json())
     .then((data) => refineData(data))
     .catch((err) => console.error(err));
-    renderRepos(repoInfo);
     setInput('');
   }
 
@@ -43,20 +44,13 @@ function App() {
       })
       updatedInfo.sort((a, b) => b.stars - a.stars)
       setRepoInfo(updatedInfo)
-    } else {
-      return;
-    }
-
-  }
-
-  const renderRepos = (repoInfo) => {
-      return <RepoInfo repoInfo={repoInfo}/>
+    } 
   }
 
   return (
     <div className="App">
       <Search input={input} setInput={setInput} setPerPage={setPerPage} fetchRepoData={fetchRepoData}/>
-      {renderRepos(repoInfo)}
+      <RepoInfo repoInfo={repoInfo} input={input}/>
     </div>
   );
 }

@@ -6,7 +6,7 @@ import './styles.css';
 export default function Search({ input, setInput, setPerPage, fetchRepoData }) {
   
   return (
-    <div className="search-input-container flex" id="search">
+    <div className="search-input-container flex">
       <form className="flex">
         <input type="text" value={input} placeholder="type org name here" onChange={(e) => setInput(e.target.value)}></input>
         <input className="btn" type="submit" onClick={fetchRepoData}></input>
