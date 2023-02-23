@@ -8,18 +8,19 @@ import './styles.css';
 export default function RepoInfo({repoInfo}) {
 
   const [commits, setCommits] = useState([]);
-  const [activeRepo, setActiveRepo] = useState('');
+  const [activeRepo, setActiveRepo] = useState();
   // const [showCommits, setShowCommits] = useState(false);
 
 
   const fetchCommits = (commits, event) => {
-    const commitsUrl = commits.split('{/sha}')[0] + "?per_page=1";
+    const commitsUrl = commits.split('{/sha}')[0] + "?per_page=5";
     fetch(commitsUrl)
     .then((response) => response.json())
     .then((data) => refineCommits(data))
     .catch((err) => console.error(err));
-    const repoName = event.currentTarget.getAttribute("name");
-    setActiveRepo(repoName);
+    const repoIndex = event.currentTarget.getAttribute("index");
+    setActiveRepo(parseInt(repoIndex));
+    // console.log("activeRepo", typeof activeRepo)
   }
 
   const refineCommits = (commits) => {
@@ -44,14 +45,12 @@ export default function RepoInfo({repoInfo}) {
   }
 
 
-
-
   return (
     <div className="repo-commit-container flex">
       {
         repoInfo && repoInfo.map((element, i) => (
           <div  key={i} className="repo-container flex" >
-            <div className="repo-card flex" name={element.name} onClick={(event) => fetchCommits(element.commits, event)}>
+            <div className="repo-card flex" index={i} onClick={(event) => fetchCommits(element.commits, event)}>
               <div className="repo-info flex">
                 <h2 id="repo-title">{element.name}</h2>
                 <p>{element.language}</p>
@@ -64,8 +63,8 @@ export default function RepoInfo({repoInfo}) {
               </div>
             </div>
             <div className="commit-container">
+               {((i === activeRepo) ?  <CommitInfo commits={commits}/> : '')}               
               {/* this is where the commits go */}
- 
             </div>
           </div>
         ))

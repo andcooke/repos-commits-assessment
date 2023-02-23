@@ -12,7 +12,13 @@ export default function CommitInfo({commits}) {
 
   return (
     <div>
-      test
+      {
+        commits.map((element) => (
+          <div>
+            <h4>{element.title}</h4>
+          </div>
+        ))
+      }
     </div>
   )
 }
