@@ -18,16 +18,24 @@ function App() {
 
   const fetchRepoData = (e) => {
     e.preventDefault();
-    fetch(requestURL, {
-      headers: {
-        Authorization: `Bearer ${process.env.REACT_APP_AUTH_TOKEN}`,
-        "Content-Type": "application/json",
-      }
-    })
-    .then((response) => response.json())
-    .then((data) => refineData(data))
-    .catch((err) => console.error(err));
-    setInput('');
+
+    // if (localStorage.getItem(input)) {
+    //   const repoInfo = localStorage.getItem(input);
+    //   setRepoInfo(JSON.parse(repoInfo))
+    //   break;
+
+    // } else {
+      fetch(requestURL, {
+        headers: {
+          Authorization: `Bearer ${process.env.REACT_APP_AUTH_TOKEN}`,
+          "Content-Type": "application/json",
+        }
+      })
+      .then((response) => response.json())
+      .then((data) => refineData(data))
+      .catch((err) => console.error(err));
+      setInput('');
+    // }
   }
 
   const refineData = (repos) => {
@@ -50,7 +58,6 @@ function App() {
       .then((data) => {
         data.forEach((element) => {
           let username = element.commit.author.name
-          console.log(element);
           if (element.author && element.author.login) {
             username = element.author.login;
           } 
@@ -77,9 +84,10 @@ function App() {
         };
         repoInfo.push(currentRepo);
       })
-      repoInfo.sort((a, b) => b.stars - a.stars)
-      localStorage.setItem(input, JSON.stringify(repoInfo));
-      setRepoInfo(repoInfo)
+      const currentRepo = repoInfo.sort((a, b) => b.stars - a.stars)
+      // localStorage.setItem(input, JSON.stringify(currentRepoCopy));
+
+      setRepoInfo(currentRepo);
     } 
   }
 
