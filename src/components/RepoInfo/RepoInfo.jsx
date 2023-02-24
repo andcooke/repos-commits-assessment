@@ -59,7 +59,7 @@ export default function RepoInfo({repoInfo}) {
         {(
           repoInfo.length 
         ? 
-          <a href='#'>Click here to return to the top</a> 
+          <a href='#search'>Click here to return to the top</a> 
         :
           '')}
       </div>
