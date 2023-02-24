@@ -18,8 +18,8 @@
 }
 
 .repo-card:hover {
-  box-shadow: 0 0 10px 5px var(--primary);
-  cursor: pointer;
+  box-shadow: 0 0 10px 5px var(--primary); 
+  cursor: pointer; 
 }
 
 .repo-container:nth-child(2n) .repo-card:hover {

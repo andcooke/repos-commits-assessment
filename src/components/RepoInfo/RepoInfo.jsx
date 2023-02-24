@@ -11,24 +11,24 @@ export default function RepoInfo({repoInfo}) {
 
   function checkActiveRepo (event, info) {
       const commitOrder = [...showCommit];
-      console.log(commitOrder);
       const repoName = event.currentTarget.getAttribute("name");
       if (commitOrder.length === 0) {
         info.forEach(() => {
           commitOrder.push(false);
         })
-      } else {
+      }
         info.forEach((element, i) => {
           if (element.name === repoName) {
             commitOrder.splice(i, 1, !(showCommit[i]));
           }
         })
-      }
+      
       setShowCommit(commitOrder);
   }
 
   return (
     <div className="repo-commit-container flex">
+      
       {
         repoInfo && repoInfo.map((element, i) => (
           <div  key={i} className="repo-container flex" >

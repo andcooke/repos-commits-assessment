@@ -30,8 +30,8 @@ function App() {
     setInput('');
   }
 
-
   const refineData = (repos) => {
+
     const repoInfo = [];
      
     if (repos.length > 0) {
@@ -50,7 +50,7 @@ function App() {
       .then((data) => {
         data.forEach((element) => {
           let username = element.commit.author.name
-        
+          console.log(element);
           if (element.author && element.author.login) {
             username = element.author.login;
           } 
@@ -78,6 +78,7 @@ function App() {
         repoInfo.push(currentRepo);
       })
       repoInfo.sort((a, b) => b.stars - a.stars)
+      localStorage.setItem(input, JSON.stringify(repoInfo));
       setRepoInfo(repoInfo)
     } 
   }
