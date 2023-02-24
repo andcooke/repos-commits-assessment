@@ -1,4 +1,3 @@
-
 .repo-container {
   width: 95%;
   justify-content: center;
@@ -9,21 +8,13 @@
   margin: -15px auto 15px auto;
 }
 
-.repo-container:nth-child(2n) .repo-card .repo-info {
+.repo-card:hover .repo-info {
   background: var(--secondary);
 }
 
-.repo-container:nth-child(2n) .repo-card {
-  border: 2px solid var(--secondary);
-}
-
 .repo-card:hover {
-  box-shadow: 0 0 10px 5px var(--primary); 
+  border-color: var(--secondary);
   cursor: pointer; 
-}
-
-.repo-container:nth-child(2n) .repo-card:hover {
-  box-shadow: 0 0 10px 5px var(--secondary);
 }
 
 .repo-card {
@@ -31,7 +22,7 @@
   color: var(--gray);
   width: 75%;
   border-radius: 15px;
-  border: 2px solid var(--primary);
+  border: 3px solid var(--primary);
   text-align: center;
   align-items: center;
   margin: 10px 0;
@@ -39,13 +30,9 @@
 
 .repo-info {
   background: var(--primary);
-  border-radius: 7px 7px 0 0;
+  border-radius: 10px 10px 0 0;
   padding: 0 15px 20px 15px;
   width: 100%;
-}
-
-.repo-info:nth-child(2n) {
-  background: var(--secondary);
 }
 
 .repo-info > * {
@@ -57,7 +44,6 @@
 #repo-title {
   margin: 20px 0;
 }
-
 
 .repo-description {
   padding: 0 10px;
@@ -110,10 +96,6 @@
 
   #repo-title {
     text-align: left;
-  }
-
-  .repo-container:nth-child(2n) .repo-card {
-    border: 4px solid var(--secondary);
   }
 
   .repo-description {
