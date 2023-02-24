@@ -12,6 +12,7 @@ export default function RepoInfo({repoInfo}) {
   function checkActiveRepo (event, info) {
       const commitOrder = [...showCommit];
       const repoName = event.currentTarget.getAttribute("name");
+      
       if (commitOrder.length === 0) {
         info.forEach(() => {
           commitOrder.push(false);

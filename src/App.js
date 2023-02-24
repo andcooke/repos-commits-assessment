@@ -13,7 +13,6 @@ function App() {
   const [perPage, setPerPage] = useState(5);
   const [repoInfo, setRepoInfo] = useState([]);
 
-
   const requestURL = `https://api.github.com/orgs/${input}/repos?per_page=${perPage}`
   
 
@@ -40,7 +39,6 @@ function App() {
   }
 
   const refineData = (repos) => {
-
     const repoInfo = [];
     if (repos.length > 0) {
       repos.forEach((element) => {
