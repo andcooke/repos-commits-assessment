@@ -10,16 +10,20 @@ export default function RepoInfo({repoInfo}) {
   const [showCommit, setShowCommit] = useState([]);
 
   function checkActiveRepo (event, info) {
-      const commitOrder = []
+      const commitOrder = [...showCommit];
+      console.log(commitOrder);
       const repoName = event.currentTarget.getAttribute("name");
-        info.forEach((element, i) => {
+      if (commitOrder.length === 0) {
+        info.forEach(() => {
           commitOrder.push(false);
         })
+      } else {
         info.forEach((element, i) => {
           if (element.name === repoName) {
             commitOrder.splice(i, 1, !(showCommit[i]));
           }
         })
+      }
       setShowCommit(commitOrder);
   }
 
