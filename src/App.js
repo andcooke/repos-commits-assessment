@@ -2,6 +2,7 @@ import './App.css';
 import React, { useState } from 'react';
 
 import Search from './components/Search/Search';
+import Instruction from './components/Instruction/Instruction';
 import RepoInfo from './components/RepoInfo/RepoInfo';
 
 
@@ -41,7 +42,6 @@ function App() {
   const refineData = (repos) => {
 
     const repoInfo = [];
-     
     if (repos.length > 0) {
       repos.forEach((element) => {
 
@@ -95,6 +95,7 @@ function App() {
 
   return (
     <div className="App">
+      {repoInfo.length ? '' : <Instruction />}
       <Search input={input} setInput={setInput} setPerPage={setPerPage} fetchRepoData={fetchRepoData}/>
       <RepoInfo repoInfo={repoInfo} input={input}/>
     </div>
