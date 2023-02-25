@@ -33,6 +33,7 @@ input:focus {
   color: var(--light);
   margin-left: -2px;
   font-style: normal;
+  -webkit-appearance: none;
 }
 
 .btn:hover {
